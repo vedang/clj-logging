@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NOTE: Change the Configuration Name to something meaningful -->
+<Configuration status="info" strict="true" name="CljLogging">
+  <Properties>
+    <!-- NOTE: Select a meaningful name for the logging filename -->
+    <Property name="filename">logs/clj_logging.log</Property>
+  </Properties>
+  <Filter type="ThresholdFilter" level="info"/>
+
+  <Appenders>
+    <File name="File" fileName="${filename}" bufferedIO="true">
+      <PatternLayout pattern="[%d] %-5p %c: %m%n"/>
+    </File>
+    <Async name="Async" includeLocation="false">
+      <AppenderRef ref="File" />
+    </Async>
+  </Appenders>
+
+  <Loggers>
+    <Root level="info">
+      <AppenderRef ref="Async"/>
+    </Root>
+  </Loggers>
+</Configuration>

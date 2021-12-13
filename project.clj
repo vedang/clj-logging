@@ -3,7 +3,11 @@
   :url "https://github.com/vedang/clj-logging"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.3"]]}}
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.3"]]}
+             :test {:jvm-opts ^:replace ["-Dclojure.tools.logging.factory=clojure.tools.logging.impl/log4j2-factory"
+                                         "-Dorg.eclipse.jetty.util.log.class=org.eclipse.jetty.util.log.Slf4jLog"
+                                         "-Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector"
+                                         "-Dlog4j2.configurationFile=log4j2-test.xml"]}}
   :dependencies [;; Set up Log4J2 as the logging backend with proper
                  ;; log library conflict resolution.
 
@@ -52,4 +56,5 @@
   :jvm-opts
   ["-Dclojure.tools.logging.factory=clojure.tools.logging.impl/log4j2-factory"
    "-Dorg.eclipse.jetty.util.log.class=org.eclipse.jetty.util.log.Slf4jLog"
-   "-Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector"])
+   "-Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector"
+   "-Dlog4j2.configurationFile=log4j2.xml"])
