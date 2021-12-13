@@ -1,0 +1,15 @@
+* What is this project?
+This is a dummy Clojure project showcasing how to configure Log4J2 as the logging backend properly, across all transitive dependencies of the project.
+
+* What should the reader do?
+1. Copy the ~:dependencies~ into your own project.
+2. Copy the ~:exclusions~ into your own project. This ensures that these libraries are never loaded into your project. Make sure that none of the deps mentioned in the exclusions are explicitly added in your project dependencies.
+3. Copy the ~:jvm-opts~ into your project. Make sure that your deployment playbooks also use these JVM opts (for example, if you are start your application using ~java -jar~).
+4. Copy the ~resources/log4j2.xml~ and ~resources/log4j2-test.xml~ files into your resources folder. Make sure that JVM opts explicitly pass the ~log4j2.configurationFile~ option to ensure that the correct file is picked this. Make sure that the ~:test~ profile uses the test configuration file.
+5. Review the configuration files and set sensible names in the configuration (override the defaults).
+
+* References used to build this project:
+- https://github.com/stuartsierra/log.dev
+- https://www.loggly.com/blog/benchmarking-java-logging-frameworks/
+- https://logging.apache.org/log4j/2.x/manual/async.html
+- https://krishankantsinghal.medium.com/logback-slf4j-log4j2-understanding-them-and-learn-how-to-use-d33deedd0c46
