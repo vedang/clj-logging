@@ -3,7 +3,7 @@
   :url "https://github.com/vedang/clj-logging"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.3"]]}
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.11.1"]]}
              :test {:jvm-opts ^:replace ["-Dclojure.tools.logging.factory=clojure.tools.logging.impl/log4j2-factory"
                                          "-Dorg.eclipse.jetty.util.log.class=org.eclipse.jetty.util.log.Slf4jLog"
                                          "-Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector"
@@ -12,17 +12,17 @@
                  ;; log library conflict resolution.
 
                  ;; Use log4j2 as the primary logging library
-                 [org.apache.logging.log4j/log4j-api "2.15.0"]
-                 [org.apache.logging.log4j/log4j-core "2.15.0"]
+                 [org.apache.logging.log4j/log4j-api "2.20.0"]
+                 [org.apache.logging.log4j/log4j-core "2.20.0"]
                  ;; Needed for logging from inside javax.servlet
-                 [org.apache.logging.log4j/log4j-web "2.15.0"]
+                 [org.apache.logging.log4j/log4j-web "2.20.0"]
 
                  ;; Use clojure.tools.logging as the primary clojure facade
-                 [org.clojure/tools.logging "1.2.1"]
+                 [org.clojure/tools.logging "1.2.4"]
 
                  ;; Use SLF4j as the primary facade for gathering all logs.
-                 [org.apache.logging.log4j/log4j-slf4j-impl "2.15.0"]
-                 [org.slf4j/slf4j-api "1.7.32"]
+                 [org.apache.logging.log4j/log4j-slf4j2-impl "2.20.0"]
+                 [org.slf4j/slf4j-api "2.0.7"]
 
                  ;; Use LMAX Disruptor to enable Async Logging
                  [com.lmax/disruptor "3.4.4"]
@@ -30,13 +30,13 @@
                  ;; Redirect everything via the SLF4J API
 
                  ;; Apache Commons logging
-                 [org.slf4j/jcl-over-slf4j "1.7.32"]
+                 [org.slf4j/jcl-over-slf4j "2.0.7"]
                  ;; Log4j 1.x
-                 [org.slf4j/log4j-over-slf4j "1.7.32"]
+                 [org.slf4j/log4j-over-slf4j "2.0.7"]
                  ;; OSGI LogService
-                 [org.slf4j/osgi-over-slf4j "1.7.32"]
+                 [org.slf4j/osgi-over-slf4j "2.0.7"]
                  ;; Java util logging
-                 [org.slf4j/jul-to-slf4j "1.7.32"]
+                 [org.slf4j/jul-to-slf4j "2.0.7"]
 
                  ;; DONE
                  ]
