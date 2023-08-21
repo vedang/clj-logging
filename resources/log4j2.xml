@@ -11,14 +11,24 @@
     <File name="File" fileName="${filename}" bufferedIO="true">
       <PatternLayout pattern="[%d] %-5p %c: %m%n"/>
     </File>
-    <Async name="Async" includeLocation="false">
+
+    <Async name="AsyncAppender" includeLocation="false">
       <AppenderRef ref="File" />
     </Async>
   </Appenders>
 
   <Loggers>
     <Root level="info">
-      <AppenderRef ref="Async"/>
+      <AppenderRef ref="AsyncAppender"/>
     </Root>
+
+    <!-- Configure logging level for external libraries  -->
+    <Logger name="com.zaxxer.hikari" level="WARN" additivity="false">
+      <AppenderRef ref="AsyncAppender" />
+    </Logger>
+    <Logger name="io.netty.util" level="WARN" additivity="false">
+      <AppenderRef ref="AsyncAppender" />
+    </Logger>
+
   </Loggers>
 </Configuration>

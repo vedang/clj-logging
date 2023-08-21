@@ -5,20 +5,37 @@
     <!-- NOTE: Select a meaningful name for the logging filename -->
     <Property name="filename">logs/clj_logging.log</Property>
   </Properties>
-  <Filter type="ThresholdFilter" level="fatal"/>
+  <Filter type="ThresholdFilter" level="debug"/>
 
   <Appenders>
+    <Console name="ConsoleAppender" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+    </Console>
+
     <File name="File" fileName="${filename}" bufferedIO="true">
       <PatternLayout pattern="[%d] %-5p %c: %m%n"/>
     </File>
-    <Async name="Async" includeLocation="false">
+
+    <Async name="AsyncAppender" includeLocation="false">
       <AppenderRef ref="File" />
     </Async>
   </Appenders>
 
   <Loggers>
-    <Root level="fatal">
-      <AppenderRef ref="Async"/>
+    <Root level="debug">
+      <AppenderRef ref="ConsoleAppender"/>
+      <AppenderRef ref="AsyncAppender"/>
     </Root>
+
+    <!-- Configure logging level for external libraries  -->
+    <Logger name="com.zaxxer.hikari" level="WARN" additivity="false">
+      <AppenderRef ref="SalherConsoleAppender" />
+      <AppenderRef ref="AsyncAppender" />
+    </Logger>
+    <Logger name="io.netty.util" level="WARN" additivity="false">
+      <AppenderRef ref="SalherConsoleAppender" />
+      <AppenderRef ref="AsyncAppender" />
+    </Logger>
+
   </Loggers>
 </Configuration>
