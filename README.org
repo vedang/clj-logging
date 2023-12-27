@@ -1,5 +1,7 @@
+#+title: Structured Logging in Clojure
+
 * What is this project?
-This is a dummy Clojure project showcasing how to configure Log4J2 as the logging backend properly, across all transitive dependencies of the project.
+This is a template Clojure project showcasing how to configure Log4J2 as the logging backend properly, to output structured logs from the project. These logs can then be consumed by a collector like [[https://vector.dev/][Vector]] and forwarded to a tool like [[https://grafana.com/oss/loki/][Loki]] for visualisation.
 
 * What should the reader do?
 1. Copy the ~:dependencies~ into your own project.
