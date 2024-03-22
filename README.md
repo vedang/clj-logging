@@ -9,7 +9,7 @@ FIXME: write usage documentation!
 This is a template project for use with [deps-new](https://github.com/seancorfield/deps-new).
 As originally generated, it will produce a new library project when run:
 
-    $ clojure -Sdeps '{:deps {io.github.vedang/clj-logging {:git/sha "TBD"}}}' -Tnew create :template me.vedang/logger :name me.vedang.latestproject/logger
+    $ clojure -Sdeps '{:deps {io.github.vedang/clj-logging {:git/sha "17f4e82ad4dbbda91a35bf10f22e58b1d29655af"}}}' -Tnew create :template me.vedang/logger :name me.vedang.latestproject/logger
 
 Assuming you have installed `deps-new` as your `new` "tool" via:
 
