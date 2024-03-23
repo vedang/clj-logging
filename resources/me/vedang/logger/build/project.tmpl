@@ -26,11 +26,7 @@
                  [org.apache.logging.log4j/log4j-slf4j2-impl "2.23.1"]
                  [org.slf4j/slf4j-api "2.0.12"]
 
-                 ;; Use LMAX Disruptor to enable Async Logging NOTE:
-                 ;; This dep needs to be *pinned* to 3.4.4, because
-                 ;; 4.x breaks compatibility with log4j2. See
-                 ;; https://github.com/apache/logging-log4j2/issues/1829
-                 ;; and update version once the issue is fixed.
+                 ;; Use LMAX Disruptor to enable Async Logging
                  [com.lmax/disruptor "4.0.0"]
 
                  ;; Redirect everything via the SLF4J API
