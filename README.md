@@ -6,7 +6,7 @@ This is a `deps-new` template which creates a logger component that I use in my 
 
 To install this code, run the following command inside your project
 
-    $ clojure -Sdeps '{:deps {io.github.vedang/clj-logging {:git/sha "17f4e82ad4dbbda91a35bf10f22e58b1d29655af"}}}' -Tnew create :template me.vedang/logger :name your.group.artifact/logger
+    $ clojure -Sdeps '{:deps {io.github.vedang/clj-logging {:git/sha "e009d366c827705f513ef9018ffd920a49ce19da"}}}' -Tnew create :template me.vedang/logger :name your.group.artifact/logger
 
 Note: The command above assumes you have installed `deps-new` as your `new` "tool" via:
 
