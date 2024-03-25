@@ -2,19 +2,24 @@
   (:require [io.pedestal.log :as log]
             [jsonista.core :as json]))
 
-(defmacro trace [& keyvals]
+(defmacro trace
+  [& keyvals]
   `(log/trace ::log/formatter json/write-value-as-string ~@keyvals))
 
-(defmacro debug [& keyvals]
+(defmacro debug
+  [& keyvals]
   `(log/debug ::log/formatter json/write-value-as-string ~@keyvals))
 
-(defmacro info [& keyvals]
+(defmacro info
+  [& keyvals]
   `(log/info ::log/formatter json/write-value-as-string ~@keyvals))
 
-(defmacro warn [& keyvals]
+(defmacro warn
+  [& keyvals]
   `(log/warn ::log/formatter json/write-value-as-string ~@keyvals))
 
-(defmacro error [& keyvals]
+(defmacro error
+  [& keyvals]
   `(log/error ::log/formatter json/write-value-as-string ~@keyvals))
 
 (defmacro spy
@@ -28,3 +33,8 @@
                   :returns ~value'
                   ::log/formatter json/write-value-as-string)
        ~value')))
+
+(defmacro with-context
+  [ctx-map & body]
+  `(log/with-context (assoc ~ctx-map ::log/formatter json/write-value-as-string)
+                     ~@body))
