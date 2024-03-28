@@ -1,8 +1,5 @@
 {:aliases
- {:build {:deps {io.github.clojure/tools.build {:mvn/version "0.9.6"},
-                 slipset/deps-deploy {:mvn/version "0.2.0"}},
-          :ns-default build},
-  :logs-dev
+ {:logs-dev
   {:jvm-opts
    ["-Dclojure.tools.logging.factory=clojure.tools.logging.impl/log4j2-factory"
     "-Dorg.eclipse.jetty.util.log.class=org.eclipse.jetty.util.log.Slf4jLog"
