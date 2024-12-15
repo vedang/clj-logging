@@ -6,7 +6,9 @@ This is a `deps-new` template which creates a logger component that I use in my 
 
 To install this code, run the following command inside your project
 
-    $ clojure -Sdeps '{:deps {io.github.vedang/clj-logging {:git/sha "e009d366c827705f513ef9018ffd920a49ce19da"}}}' -Tnew create :template me.vedang/logger :name your.group.artifact/logger
+```bash
+clojure -Sdeps '{:deps {io.github.vedang/clj-logging {:git/sha "5d7b9e3f3ddd8693f89e77484ae97615a90d89ba"}}}' -Tnew create :template me.vedang/logger :name your.group.artifact/logger
+```
 
 Note: The command above assumes you have installed `deps-new` as your `new` "tool" via:
 
@@ -28,6 +30,8 @@ This is create a folder called `logger`. To use this folder, you can add an alia
     ;; depending on requirement during development
     "-Dlogging.level=DEBUG"]}
 ```
+
+Now, you can `require` the `namespace` `your.group.artifact.logger.interface` everywhere in your project, and use the macros defined in it. This namespace is a thin wrapper on top of the `pedestal.log` logging library to ensure structured logging (JSON) output.
 
 ## Developing the template
 
