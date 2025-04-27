@@ -5,7 +5,7 @@ This is a template Clojure project showcasing how to configure Log4J2 as the log
 
 To install the template, run the following code:
 #+begin_src sh :eval no
-  clojure -Sdeps '{:deps {io.github.vedang/clj-logging {:git/sha "763371d30b608a2c7ce818996de162cda7407f98"}}}' -Tnew create :template me.vedang/logger :name your.group.artifact/logger
+  clojure -Sdeps '{:deps {io.github.vedang/clj-logging {:git/sha "e009d366c827705f513ef9018ffd920a49ce19da"}}}' -Tnew create :template me.vedang/logger :name yourprojectname/logger
 #+end_src
 
 Note that this assumes you have installed ~deps-new~ as your ~new~ "tool" via:
