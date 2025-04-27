@@ -5,7 +5,7 @@ This is a template Clojure project showcasing how to configure Log4J2 as the log
 
 To install the template, run the following code:
 #+begin_src sh :eval no
-  clojure -Sdeps '{:deps {io.github.vedang/clj-logging {:git/sha "e009d366c827705f513ef9018ffd920a49ce19da"}}}' -Tnew create :template me.vedang/logger :name yourprojectname/logger
+  clojure -Sdeps '{:deps {io.github.vedang/clj-logging {:git/sha "318419e65228a0700476a5e954cc1116045999ed"}}}' -Tnew create :template me.vedang/logger :name yourprojectname/logger
 #+end_src
 
 Note that this assumes you have installed ~deps-new~ as your ~new~ "tool" via:
@@ -13,6 +13,26 @@ Note that this assumes you have installed ~deps-new~ as your ~new~ "tool" via:
 #+begin_src sh
 clojure -Ttools install-latest :lib io.github.seancorfield/deps-new :as new
 #+end_src
+
+* Using this project
+The above step will create a folder called ~logger~. To use this folder, you can add an alias as follows to your main ~deps.edn~ file:
+
+#+begin_src clojure
+:logs-dev
+ {:extra-deps {me.vedang/logger {:local/root "logger"}}
+  :jvm-opts
+   ["-Dclojure.tools.logging.factory=clojure.tools.logging.impl/log4j2-factory"
+    "-Dorg.eclipse.jetty.util.log.class=org.eclipse.jetty.util.log.Slf4jLog"
+    "-Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector"
+    "-Dlog4j2.configurationFile=logger/log4j2-dev.xml"
+    ;; Change logging.level to one of TRACE, DEBUG, INFO, WARN, ERROR
+    ;; depending on requirement during development
+    "-Dlogging.level=INFO"]}
+#+end_src
+
+Now, you can ~require~ the namespace ~your.group.artifact.logger.interface~ everywhere in your project, and use the macros defined in it. This namespace is a thin wrapper on top of the ~pedestal.log~ logging library to ensure structured logging (JSON) output.
+
+Note that this code is Babashka compliant, meaning it will work in your BB projects as well.
 
 * References used to build this project:
 - https://github.com/stuartsierra/log.dev
