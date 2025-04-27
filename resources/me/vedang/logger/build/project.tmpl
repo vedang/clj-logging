@@ -3,7 +3,7 @@
   :license {:name "Eclipse Public License",
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :profiles
-    {:dev {:dependencies [[org.clojure/clojure "1.11.2"]]},
+    {:dev {:dependencies [[org.clojure/clojure "1.12.0"]]},
      :test
      {:jvm-opts
       ^:replace
@@ -19,24 +19,29 @@
                  [org.apache.logging.log4j/log4j-core "2.24.3"]
                  ;; Needed for logging from inside javax.servlet
                  [org.apache.logging.log4j/log4j-web "2.24.3"]
-                 ;; Use pedestal.log as the primary clojure facade
+                 ;; Use pedestal.log as the primary clojure facade. On
+                 ;; Babashka, we use taoensso.timbre (which is built-in)
+                 ;; instead of pedestal.log. [ref: babashka_logging]
                  [io.pedestal/pedestal.log "0.7.2"]
-                 ;; Use jsonista.core to format log as json
+                 ;; Use jsonista.core to format log as json. On Babashka,
+                 ;; we use Cheshire, which is built-in. babashka.json makes
+                 ;; the choice transparently. [ref: babashka_json]
                  [metosin/jsonista "0.3.13"]
+                 [org.babashka/json "0.1.6"]
                  ;; Use SLF4j as the primary facade for gathering all logs.
                  [org.apache.logging.log4j/log4j-slf4j2-impl "2.24.3"]
-                 [org.slf4j/slf4j-api "2.0.16"]
+                 [org.slf4j/slf4j-api "2.0.17"]
                  ;; Use LMAX Disruptor to enable Async Logging
                  [com.lmax/disruptor "4.0.0"]
                  ;; Redirect everything via the SLF4J API
                  ;; Apache Commons logging
-                 [org.slf4j/jcl-over-slf4j "2.0.16"]
+                 [org.slf4j/jcl-over-slf4j "2.0.17"]
                  ;; Log4j 1.x
-                 [org.slf4j/log4j-over-slf4j "2.0.16"]
+                 [org.slf4j/log4j-over-slf4j "2.0.17"]
                  ;; OSGI LogService
-                 [org.slf4j/osgi-over-slf4j "2.0.16"]
+                 [org.slf4j/osgi-over-slf4j "2.0.17"]
                  ;; Java util logging
-                 [org.slf4j/jul-to-slf4j "2.0.16"]
+                 [org.slf4j/jul-to-slf4j "2.0.17"]
                  ;; DONE
                 ]
   :exclusions [;; Exclude transitive dependencies on all other logging
