@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="OFF" strict="true" name="{{top/ns}}.Logging">
+  <Filter type="ThresholdFilter" level="${sys:logging.level}"/>
+
+  <Appenders>
+    <Console name="Console" target="SYSTEM_ERR">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %X%msg%n" />
+    </Console>
+
+    <Async name="AsyncConsoleAppender" includeLocation="false">
+      <AppenderRef ref="Console" />
+    </Async>
+  </Appenders>
+
+  <Loggers>
+    <Root level="${sys:logging.level}">
+      <AppenderRef ref="AsyncConsoleAppender"/>
+    </Root>
+
+    <!-- Configure logging level for external libraries  -->
+    <Logger name="com.zaxxer.hikari" level="ERROR" additivity="false">
+      <AppenderRef ref="AsyncConsoleAppender"/>
+    </Logger>
+    <Logger name="io.netty.util" level="WARN" additivity="false">
+      <AppenderRef ref="AsyncConsoleAppender"/>
+    </Logger>
+    <Logger name="org.eclipse.jetty" level="WARN" additivity="false">
+      <AppenderRef ref="AsyncConsoleAppender"/>
+    </Logger>
+    <Logger name="io.pedestal" level="INFO" additivity="false">
+      <AppenderRef ref="AsyncConsoleAppender"/>
+    </Logger>
+    <Logger name="org.apache.http" level="WARN" additivity="false">
+      <AppenderRef ref="AsyncConsoleAppender"/>
+    </Logger>
+  </Loggers>
+</Configuration>
